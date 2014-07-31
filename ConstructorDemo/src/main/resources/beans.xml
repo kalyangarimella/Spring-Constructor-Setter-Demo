@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+	<bean id="helloService1" class="com.santosh.spring.HelloService"></bean>
+
+	<bean id="helloService2" class="com.santosh.spring.HelloService">
+
+		<constructor-arg type="java.lang.String">
+			<value>Hello to Spring Framework using XML Configuration</value>
+		</constructor-arg>
+
+	</bean>
+
+	<bean id="helloService3" class="com.santosh.spring.HelloService">
+
+		<constructor-arg type="java.util.Map">
+
+			<map>
+
+				<entry>
+					<key>
+						<value>username</value>
+					</key>
+					<value>Kalyan</value>
+				</entry>
+
+				<entry>
+					<key>
+						<value>password</value>
+					</key>
+					<value>Kasyap</value>
+				</entry>
+
+				<entry key="data" value="datagram"></entry>
+
+				<entry key="data1" value-ref="dataval1"></entry>
+
+				<entry key-ref="data2" value-ref="dataval1"></entry>
+
+			</map>
+
+		</constructor-arg>
+
+	</bean>
+
+	<bean id="dataval1" class="java.lang.String">
+		<constructor-arg value="datagram1"></constructor-arg>
+	</bean>
+
+	<bean id="data2" class="java.lang.String">
+		<constructor-arg value="data2"></constructor-arg>
+	</bean>
+
+	<bean id="helloService4" class="com.santosh.spring.HelloService">
+		<constructor-arg type="java.util.List">
+			<list>
+				<value>kalyan</value>
+				<value>kalyan</value>
+				<value>kasyap</value>
+				<value>garimella</value>
+				<value></value>
+				<ref local="data2" />
+				<ref bean="dataval1" />
+				<bean id="data" class="java.lang.String">
+					<constructor-arg value="innerdata"></constructor-arg>
+				</bean>
+				<null></null>
+			</list>
+		</constructor-arg>
+	</bean>
+	
+	<bean id="helloService5" class="com.santosh.spring.HelloService">
+		<constructor-arg type="java.util.Set">
+			<set>
+				<value>varun</value>
+				<value>varun</value>
+				<value></value>
+				<value>aaron</value>
+				<bean id="data3" class="java.lang.String">
+					<constructor-arg value="innerdata"></constructor-arg>
+				</bean>
+				<null></null>
+			</set>
+		</constructor-arg>
+	</bean>
+	
+	<bean id="helloService6" class="com.santosh.spring.HelloService">
+		<constructor-arg type="java.util.Properties">
+			<props>
+				<prop key="username">kalyan</prop>
+				<prop key="password">kasyap</prop>
+			</props>
+		</constructor-arg>
+	</bean>
+	
+</beans>
