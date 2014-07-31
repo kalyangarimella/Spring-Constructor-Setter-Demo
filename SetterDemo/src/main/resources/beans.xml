@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"	
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="
+	http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+    http://www.springframework.org/schema/util 
+    http://www.springframework.org/schema/util/spring-util-3.0.xsd">
+    
+    <bean id="helloService" class="com.santosh.spring.HelloService">
+    	<property name="message" value="This is from Spring XML File"></property>
+    </bean>
+    
+    <bean id="helloService1" class="com.santosh.spring.HelloService">
+    	<property name="message">
+    		<value>This is from helloService1 Spring XML File</value>
+    	</property>
+    </bean>
+    
+    <bean id="helloService2" class="com.santosh.spring.HelloService">
+    	<property name="message" ref="msg"></property>
+    </bean>
+    
+    <bean id="msg" class="java.lang.String">
+    	<constructor-arg>
+    		<value>Sample Message</value>
+    	</constructor-arg>
+    </bean>
+    
+    <bean id="helloService3" class="com.santosh.spring.HelloService" p:message="From attribute tag"></bean>
+    
+    <bean id="helloService4" class="com.santosh.spring.HelloService" p:message-ref="msg"></bean>
+    
+    <bean id="helloService5" class="com.santosh.spring.HelloService" p:list-ref="myList"></bean>
+    
+    <util:list id="myList">
+    	<value>Kalyan</value>
+    	<value>Kasyap</value>
+    	<bean id="data" class="java.lang.String">
+    		<constructor-arg value="data"></constructor-arg>
+    	</bean>
+    	<ref local="msg"/>
+    </util:list>   
+    
+    <bean id="helloService6" class="com.santosh.spring.HelloService" p:set-ref="mySet"></bean>
+    
+    <util:set id="mySet">
+    	<value>set1</value>
+    	<value>set2</value>
+    	<bean id="data1" class="java.lang.String">
+    		<constructor-arg value="data1"></constructor-arg>
+    	</bean>
+    	<ref local="msg"/>
+    </util:set>
+    
+    <bean id="helloService7" class="com.santosh.spring.HelloService" p:map-ref="myMap"></bean>
+    
+    <util:map id="myMap">
+    	<entry>
+    		<key><value>username</value></key>
+    		<value>kalyan</value>
+    	</entry>
+    	<entry>
+    		<key><value>password</value></key>
+    		<value>renuka</value>
+    	</entry>
+    </util:map>
+    
+    <bean id="helloService8" class="com.santosh.spring.HelloService" p:props-ref="myProps"></bean>
+    
+    <util:properties id="myProps">    
+    	<prop key="prop-key">kalyan</prop>
+    	<prop key="prop-value">kasyap</prop>
+    </util:properties>
+</beans>
